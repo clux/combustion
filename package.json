@@ -1,0 +1,32 @@
+{
+  "author": "Eirik Albrigtsen <analsandblaster@gmail.com>",
+  "name": "combustion",
+  "description": "A hacky micro-templating engine",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/clux/combustion.git"
+  },
+  "keywords": [
+    "micro",
+    "templating",
+    "template",
+    "engine",
+    "mustache",
+    "browser",
+    "commonjs"
+  ],
+  "main": "combustion.js",
+  "scripts": {
+    "test": "tap ./test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "tap": "~0.2.5"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "license": "MIT"
+}
