@@ -103,52 +103,29 @@ test("template", function (t) {
   t.end();
 });
 
-/*test('_.template handles \\u2028 & \\u2029', function() {
-  var tmpl = _.template('<p>\u2028<%= "\\u2028\\u2029" %>\u2029</p>');
-  strictEqual(tmpl(), '<p>\u2028\u2028\u2029\u2029</p>');
+test('handling \\u2028 & \\u2029', function (t) {
+  var tmpl = c('<p>\u2028<%= "\\u2028\\u2029" %>\u2029</p>');
+  t.equal(tmpl(), '<p>\u2028\u2028\u2029\u2029</p>');
+  t.end();
 });
 
-test('result calls functions and returns primitives', function() {
-  var obj = {w: '', x: 'x', y: function(){ return this.x; }};
-  strictEqual(_.result(obj, 'w'), '');
-  strictEqual(_.result(obj, 'x'), 'x');
-  strictEqual(_.result(obj, 'y'), 'x');
-  strictEqual(_.result(obj, 'z'), undefined);
-  strictEqual(_.result(null, 'x'), null);
+test('undefined template variables.', function (t) {
+  var template = c('<%=x%>');
+  t.equal(template({x: null}), 'null');
+  t.equal(template({x: undefined}), 'undefined');
+
+  var templateEscaped = c('<%-x%>');
+  t.equal(templateEscaped({x: null}), 'null');
+  t.equal(templateEscaped({x: undefined}), 'undefined');
+
+  var templateWithProperty = c('<%=x.foo%>');
+  t.equal(templateWithProperty({x: {} }), 'undefined');
+
+  var templateWithPropertyEscaped = c('<%-x.foo%>');
+  t.equal(templateWithPropertyEscaped({x: {} }), 'undefined');
+  t.end();
 });
 
-test('_.templateSettings.variable', function() {
-  var s = '<%=data.x%>';
-  var data = {x: 'x'};
-  strictEqual(_.template(s, data, {variable: 'data'}), 'x');
-  _.templateSettings.variable = 'data';
-  strictEqual(_.template(s)(data), 'x');
-});
-
-test('#547 - _.templateSettings is unchanged by custom settings.', function() {
-  ok(!_.templateSettings.variable);
-  _.template('', {}, {variable: 'x'});
-  ok(!_.templateSettings.variable);
-});
-
-test('#556 - undefined template variables.', function() {
-  var template = _.template('<%=x%>');
-  strictEqual(template({x: null}), '');
-  strictEqual(template({x: undefined}), '');
-
-  var templateEscaped = _.template('<%-x%>');
-  strictEqual(templateEscaped({x: null}), '');
-  strictEqual(templateEscaped({x: undefined}), '');
-
-  var templateWithProperty = _.template('<%=x.foo%>');
-  strictEqual(templateWithProperty({x: {} }), '');
-  strictEqual(templateWithProperty({x: {} }), '');
-
-  var templateWithPropertyEscaped = _.template('<%-x.foo%>');
-  strictEqual(templateWithPropertyEscaped({x: {} }), '');
-  strictEqual(templateWithPropertyEscaped({x: {} }), '');
-});
-*/
 test('interpolate evaluates code only once', function (t) {
   var count = 0;
   var template = c('<%= f() %>');
