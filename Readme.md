@@ -49,6 +49,8 @@ template({number: 4}); // "2 winners"
 template({number: 5}); // "1 winner"
 ````
 
+Here the functional utility library [interlude](https://github.com/clux/interlude) is made available inside the templates instead of underscore. Customize and use your own helper library if you want to.
+
 ## Delimiters
 If ERB-style delimiters aren't your cup of tea, you can change the template settings to use different symbols to set off interpolated code. Define an interpolate regex to match expressions that should be interpolated verbatim, an escape regex to match expressions that should be inserted after being HTML escaped, and an evaluate regex to match expressions that should be evaluated without insertion into the resulting string. You may define or omit any combination of the three. For example, to perform Mustache.js style templating:
 
@@ -86,8 +88,8 @@ return __p;
 The idea is that you could pre-compile all templates in a pre-build step on the server, into a format that can be simply required from your browser commonjs environment. It's not immediately straightforward, because unescaping (i.e. `<%- "<inject>" %>`)assumes a 10 line dependency inside combustion, and if you want helpers available, then the build step needs to _promise_ the file you are compiling into, that these helpers will exist in the commonjs environment. I plan to eventually add this functionality to an external script, it's just not the first priority at the moment.
 
 
-### _.template diff
-In short, the biggest changes between _.template are:
+### Differences From Underscore
+The main compilation function is essentially taken from underscore, but there are customizations.
 
 - designed to work in non-global environment with localized helpers
 - compile call is always curried to strongly encourage caching of Function constructor
