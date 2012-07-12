@@ -1,5 +1,5 @@
 # Combustion [![Build Status](https://secure.travis-ci.org/clux/combustion.png)](http://travis-ci.org/clux/combustion)
-Combustion is a simple template engine abstaction built built upon code from underscore's template function. It's a micro-templating library, similar to [John Resig's implementation](http://ejohn.org/blog/javascript-micro-templating/), but it allows custom injection of helpers and the utility library of choice in a strict commonjs environment where globals are annihilated.
+Combustion is a simple template engine abstaction built built upon code from underscore's template function. It's a micro-templating library, similar to [John Resig's implementation](http://ejohn.org/blog/javascript-micro-templating/), but it allows custom injection of helpers and the utility library of choice in a strict commonjs environment where globals are annihilated. It's dependency-free and tiny when it's main entry point is required, but for node it includes helpers for server-side compilation.
 
 ## Usage
 Require the library, and make a compiler with a custom helper object, and optionally inject utility library to make available inside template code. If no utility library is given, the `$` variable inside a template function will shadow whatever global value it may have.
@@ -86,7 +86,24 @@ return __p;
 }"
 ````
 
-The idea is that you could pre-compile all templates in a pre-build step on the server, into a format that can be simply required from your browser commonjs environment. It's not immediately straightforward, because unescaping (i.e. `<%- "<inject>" %>`)assumes a 10 line dependency inside combustion, and if you want helpers available, then the build step needs to _promise_ the file you are compiling into, that these helpers will exist in the commonjs environment. I plan to eventually add this functionality to an external script, it's just not the first priority at the moment.
+This allows basic pre-compilation, but it's not simply concatenating these sources as unescaping (i.e. `<%- "<inject>" %>`)assumes a 10 line dependency inside combustion, and if you want helpers available, then the build step needs to _promise_ the file you are compiling into, that these helpers will exist in the commonjs environment. To use this functionality link it (from the combustion directory)
+
+````bash
+$ sudo npm link
+````
+
+then use the executable to parse a template directory recursively:
+
+````bash
+$ combustion -d ./templateDir -h helperFile -u utilityLibrary > templates.js
+````
+
+Then require it from your commonjs environment:
+
+````javascript
+var templates = require('./templates');
+templates['user/profile']; // template function compiled from templateDir/user/profile.html
+````
 
 
 ### Differences From Underscore

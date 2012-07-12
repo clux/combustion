@@ -17,10 +17,16 @@
     "commonjs"
   ],
   "main": "lib/combustion.js",
+  "bin" : {
+    "combustion": "./lib/precompiler.js"
+  },
   "scripts": {
     "test": "tap ./test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "optimist": "~0.3.4",
+    "fsx": "~1.0.1"
+  },
   "devDependencies": {
     "tap": "~0.2.5"
   },
