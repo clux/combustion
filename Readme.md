@@ -105,14 +105,6 @@ var templates = require('./templates');
 templates['user/profile']; // template function compiled from templateDir/user/profile.html
 ````
 
-
-### Differences From Underscore
-The main compilation function is essentially taken from underscore, but there are customizations.
-
-- designed to work in non-global environment with localized helpers
-- compile call is always curried to strongly encourage caching of Function constructor
-- `print` function removed, use the standard <%=name%> to print a variable or make a helper for it
-
 ## Installation
 
 ````bash
