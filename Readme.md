@@ -69,6 +69,7 @@ By default, template places the values from your data in the local scope via the
 ````javascript
 var template = compiler("<%= data.name %>!", "data");
 template({name: "Hogan"}); // "Hogan!"
+````
 
 ## Precompiling
 Precompiling your templates can be a big help when debugging errors you can't reproduce. This is because precompiled templates can provide line numbers and a stack trace, something that is not possible when compiling templates on the client. The source property is available on the compiled template function for easy precompilation.
