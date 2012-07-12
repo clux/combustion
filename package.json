@@ -2,7 +2,7 @@
   "author": "Eirik Albrigtsen <analsandblaster@gmail.com>",
   "name": "combustion",
   "description": "A hacky micro-templating engine",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/clux/combustion.git"
@@ -17,7 +17,7 @@
     "commonjs"
   ],
   "main": "lib/combustion.js",
-  "bin" : {
+  "bin": {
     "combustion": "./lib/precompiler.js"
   },
   "scripts": {
