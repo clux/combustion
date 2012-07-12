@@ -12,7 +12,7 @@ template({name: 'clux'}); // "hello: <b>clux</b>"
 ````
 
 The API is as follows:
-### require('combustion') :: ([settings [, utility]]) -> compilerFn
+### require('combustion') :: (settings [, utility]) -> compilerFn
 ### compilerFn :: (str [, variable]) -> templateFn
 ### templateFn :: (obj) -> htmlString
 
@@ -47,6 +47,7 @@ var compiler = require('combustion')({helpers: helpers, helperName: 'h'}, $);
 var template = compiler("<%= h.pluralize("winner", $.gcd(number, 6)) %>");
 template({number: 4}); // "2 winners"
 template({number: 5}); // "1 winner"
+````
 
 ## Delimiters
 If ERB-style delimiters aren't your cup of tea, you can change the template settings to use different symbols to set off interpolated code. Define an interpolate regex to match expressions that should be interpolated verbatim, an escape regex to match expressions that should be inserted after being HTML escaped, and an evaluate regex to match expressions that should be evaluated without insertion into the resulting string. You may define or omit any combination of the three. For example, to perform Mustache.js style templating:
