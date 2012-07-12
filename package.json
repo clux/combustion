@@ -16,7 +16,7 @@
     "browser",
     "commonjs"
   ],
-  "main": "combustion.js",
+  "main": "lib/combustion.js",
   "scripts": {
     "test": "tap ./test"
   },
