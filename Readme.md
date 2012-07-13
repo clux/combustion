@@ -21,8 +21,8 @@ When one instantiates combustion with a settings object and a utility library we
 
 ````javascript
 var tStr = "<div id=\"winner\"><% if (name == 'clux') { %> \
-    <b><%=name + '!'%></b><% \
-  } else { %> \
+    <b><%=name + '!'%></b> \
+  <% } else { %> \
     <i><%-'lucky ' + name%></i> \
   <% } %> \
 </div>";
