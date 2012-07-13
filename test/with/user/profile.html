@@ -1,0 +1,12 @@
+<div>
+  <header><%-name%></header>
+  <% if (skills.length) { %>
+  <ul>
+    <% skills.forEach(function (skill) { %>
+      <li><%=skill%></li>
+    <% }) %>
+  </ul>
+  <% } else { %>
+  <p>Clueless guy</p>
+  <% } %>
+</div>

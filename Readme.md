@@ -20,14 +20,21 @@ The API is as follows:
 When one instantiates combustion with a settings object and a utility library we get a compiler function.This compiles JavaScript templates into functions that can be evaluated for rendering. Template functions can both interpolate variables, using <%= … %>, as well as execute arbitrary JavaScript code, with <% … %>. If you wish to interpolate a value, and have it be HTML-escaped, use <%- … %> When you evaluate a template function, pass in a data object that has properties corresponding to the template's free variables.
 
 ````javascript
-var tStr = "<div id=\"winner\"><% if (name == 'clux') { %><b><%=name + '!'%></b><% } else { %><i><%-'lucky ' + name%></i><% } %></div>";
+var tStr = "<div id=\"winner\"><% if (name == 'clux') { %> \
+    <b><%=name + '!'%></b><% \
+  } else { %> \
+    <i><%-'lucky ' + name%></i> \
+  <% } %> \
+</div>";
 var template = compiler(tStr);
 
 template({name:clux});
-// "<div id="winner"><b>clux!</b></div>"
+// '<div id="winner"><b>clux!</b></div>'
 template({name:'<injector>'});
-// "<div id="winner"><i>lucky &lt;injector&gt;</i></div>"
+// '<div id="winner"><i>lucky &lt;injector&gt;</i></div>'
 ````
+
+Note the multiline comment breaks are only needed if you wrote the templates inside javascript - which would be silly.
 
 ## Customization (Client)
 ### Adding Methods
@@ -49,7 +56,7 @@ var settings = {
 }
 
 var compiler = require('combustion')(settings);
-var template = compiler("<%= h.pluralize("winner", $.gcd(number, 6)) %>");
+var template = compiler("<%= h.pluralize('winner', $.gcd(number, 6)) %>");
 template({number: 4}); // "2 winners"
 template({number: 5}); // "1 winner"
 ````
@@ -134,7 +141,9 @@ A combustion config file looks almost exactly like the default settings object p
 Thus, a sensible default `.combustion` file can look like this:
 
 ````
-// templateDir/.combustion
+/**
+ * @file templateDir/.combustion
+ */
 
 module.exports = {
   evaluate    : /<%([\s\S]+?)%>/g

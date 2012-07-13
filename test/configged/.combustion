@@ -1,0 +1,17 @@
+// defaults
+module.exports = {
+  // ERB-style delimiters + empty helper with unobtrusive var
+  evaluate    : /<%([\s\S]+?)%>/g
+, interpolate : /<%=([\s\S]+?)%>/g
+, escape      : /<%-([\s\S]+?)%>/g
+  // hempty helper object
+, helpers     : './configged/helpers.js'
+  // with unobtrusive name
+, helperName  : 'h'
+
+  // no utility library
+, utility     : 'autonomy'
+
+  // common variable name across all templates
+, variable    : 'data'
+};
