@@ -22,7 +22,7 @@
     "combust": "./lib/precompiler.js"
   },
   "scripts": {
-    "test": "tap ./test"
+    "test": "tap ./test/*.js"
   },
   "dependencies": {
     "optimist": "~0.3.4",
