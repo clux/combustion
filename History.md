@@ -2,6 +2,10 @@ TODO
 ==================
   * can probably do neat template inheritance by using template functions as helpers..
 
+0.3.1 / 2012-09-29
+==================
+  * fix npmjs formatting
+
 0.3.0 / 2012-07-13
 ==================
   * add javascript config file possibility for precomilation using `confortable`
