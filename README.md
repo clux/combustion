@@ -44,15 +44,15 @@ Combustion allows adding helpers into the scope of the template functions. This 
 var helpers = {
   print : function () {
     return Array.prototype.join.call(arguments, '');
-  }
-, pluralize : function (str, num) {
+  },
+  pluralize : function (str, num) {
     return num + ' ' + (num === 1 ? : '' : 's');
   }
 };
 var settings = {
-  utility     : require('interlude')
-, helpers     : helpers
-, helperName  : 'h'
+  utility     : require('interlude'),
+  helpers     : helpers,
+  helperName  : 'h'
 }
 
 var compiler = require('combustion')(settings);
@@ -146,13 +146,13 @@ Thus, a sensible default `.combustion` file can look like this:
  */
 
 module.exports = {
-  evaluate    : /<%([\s\S]+?)%>/g
-, interpolate : /<%=([\s\S]+?)%>/g
-, escape      : /<%-([\s\S]+?)%>/g
-, helpers     : './helpers'
-, helperName  : 'h'
-, utility     : 'interlude'
-, variable    : null
+  evaluate    : /<%([\s\S]+?)%>/g,
+  interpolate : /<%=([\s\S]+?)%>/g,
+  escape      : /<%-([\s\S]+?)%>/g,
+  helpers     : './helpers',
+  helperName  : 'h',
+  utility     : 'interlude',
+  variable    : null
 };
 ```
 
