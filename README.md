@@ -1,4 +1,8 @@
-# Combustion [![Build Status](https://secure.travis-ci.org/clux/combustion.png)](http://travis-ci.org/clux/combustion)
+# Combustion
+[![Build Status](https://secure.travis-ci.org/clux/combustion.png)](http://travis-ci.org/clux/combustion)
+[![Dependency Status](https://david-dm.org/clux/combustion.png)](https://david-dm.org/clux/combustion)
+[![unstable](http://hughsk.github.io/stability-badges/dist/unstable.svg)](http://nodejs.org/api/documentation.html#documentation_stability_index)
+
 Combustion is a simple template engine abstaction built built upon code from underscore's template function. It's a micro-templating library, similar to [John Resig's implementation](http://ejohn.org/blog/javascript-micro-templating/), but it allows custom injection of helpers and the utility library of choice in a strict commonjs environment where globals are annihilated. It's dependency-free and tiny when it's main entry point is required, but for node it includes helpers for server-side compilation.
 
 ## Usage
